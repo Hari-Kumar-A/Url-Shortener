@@ -1,0 +1,42 @@
+<div class="covering">
+
+    <div class="dashboard">
+        <div class="heading">Your Urls</div>
+        <form action="/urls/search" role="search" method="post" class="search">
+            <input type="search" name="searchurl" class="searchinput" placeholder="Search Urls by Name.." aria-label="Search">
+        </form>
+        <button> <a href="/urls/addurl">+New Url</a></button> 
+    </div>
+    
+    <div class="link"> <a href="/">Dashboard</a> / Urls</div>
+
+    <div class="assignmenttable">
+    <table>
+        <thead>
+        <tr>
+          <th >Name</th>
+          <th >Full Url</th>
+          <th >Short Url</th> 
+          <th>Manage Url</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% urlsdata.forEach(element => { %>
+            <tr>
+                <td><%= element.name %></td> 
+                <td><%= element.fullurl %></td> 
+                <td><a href="/urls/view/<%= element._id %>" target="_blank" ><%= element.shorturl %></a> </td> 
+                <td>
+                    <div class="buttons">
+                        <a href="/urls/delete/<%= element._id %>" >Delete</a>  
+                </div>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+        
+      </table>
+    </div>
+</div>
+
